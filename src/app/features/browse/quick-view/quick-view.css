@@ -1,0 +1,104 @@
+.quick-view-container {
+    background-color: #1a1a24;
+    color: white;
+    position: relative;
+    max-width: 800px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.content-split {
+    display: flex;
+    height: 450px;
+}
+
+.poster-side {
+    width: 300px;
+    background-size: cover;
+    background-position: center;
+}
+
+.details-side {
+    flex: 1;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    margin: 0 0 16px 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.meta-tags {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.tag {
+    background: #2a2a35;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.tag.cert {
+    border: 1px solid #a0a0b0;
+    background: transparent;
+}
+
+.tag mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: #e58e26;
+}
+
+.synopsis {
+    color: #a0a0b0;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.info-row {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #a0a0b0;
+}
+
+.info-row strong {
+    color: white;
+    margin-right: 8px;
+}
+
+.action-footer {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #2a2a35;
+}
+
+.book-btn {
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}

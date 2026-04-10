@@ -1,0 +1,16 @@
+<div class="admin-container">
+      <mat-card class="admin-card">
+        <h2>Manage Genres</h2>
+        <div class="add-row">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>New Genre Name</mat-label>
+            <input matInput [(ngModel)]="newGenre" placeholder="e.g. Documentary" (keyup.enter)="addGenre()">
+          </mat-form-field>
+          <button mat-flat-button color="warn" class="add-btn" (click)="addGenre()" [disabled]="!newGenre.trim()">Add</button>
+        </div>
+
+        <div class="genre-list">
+          <div class="genre-chip" *ngFor="let g of genres$ | async">{{ g.name }}</div>
+        </div>
+      </mat-card>
+    </div>

@@ -1,0 +1,88 @@
+<div class="dashboard-container">
+  <div class="header">
+    <h2>Admin Overview</h2>
+    <p>Monitor your platform's users and activity.</p>
+  </div>
+
+  <div class="stats-row" *ngIf="users$ | async as users">
+    <mat-card class="stat-card">
+      <mat-icon color="primary">group</mat-icon>
+      <div class="stat-info">
+        <h3>Total Users</h3>
+        <h1>{{ users.length }}</h1>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card" *ngIf="movies$ | async as movies">
+      <mat-icon color="accent">movie</mat-icon>
+      <div class="stat-info">
+        <h3>Total Movies</h3>
+        <h1>{{ movies.length }}</h1>
+      </div>
+    </mat-card>
+  </div>
+
+  <mat-card class="table-card" style="margin-bottom: 32px;">
+    <div class="table-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2a35; padding-bottom: 16px; margin-bottom: 16px;">
+      <h3 style="margin: 0; border: none; padding: 0;">Manage Movies</h3>
+      <button mat-flat-button color="warn" routerLink="/admin/manage-movies">
+        <mat-icon>add</mat-icon> Add Movie
+      </button>
+    </div>
+    
+    <div class="table-container">
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th>Movie Title</th>
+            <th>Duration</th>
+            <th>Rating</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movie of movies$ | async">
+            <td style="font-weight: bold;">{{ movie.title }}</td>
+            <td>{{ movie.durationMinutes }} min</td>
+            <td><mat-icon inline style="color: #e58e26; vertical-align: middle;">star</mat-icon> {{ movie.imdbRating }}</td>
+            <td>
+              <button mat-icon-button color="primary" [routerLink]="['/admin/manage-movies', movie.id]">
+                <mat-icon>edit</mat-icon>
+              </button>
+              
+              <button mat-icon-button color="warn" (click)="deleteMovie(movie.id, movie.title)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
+
+  <mat-card class="table-card">
+    <h3 style="margin-top: 0; border-bottom: 1px solid #2a2a35; padding-bottom: 16px; margin-bottom: 16px;">Registered Users</h3>
+    <div class="table-container">
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users$ | async">
+            <td class="user-name">
+              <div class="avatar">{{ user.displayName.charAt(0).toUpperCase() || 'U' }}</div>
+              {{ user.displayName || 'No Name Provided' }}
+            </td>
+            <td>{{ user.email }}</td>
+            <td><span class="role-badge" [class.admin]="user.role === 'admin'">{{ user.role | uppercase }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
+
+</div>

@@ -1,0 +1,74 @@
+<div class="dashboard-container" *ngIf="authService.currentUserProfile$ | async as user">
+      
+      <aside class="profile-sidebar">
+        <div class="avatar">{{ user.displayName.charAt(0).toUpperCase() }}</div>
+        <h2>{{ user.displayName }}</h2>
+        <p class="email">{{ user.email }}</p>
+        <div class="role-badge" [class.admin]="user.role === 'admin'">{{ user.role | uppercase }}</div>
+        
+        <div class="action-buttons">
+  
+          <button mat-stroked-button color="warn" class="sidebar-btn" (click)="deleteAccount()">Delete Account</button>
+        </div>
+      </aside>
+
+      <main class="profile-content">
+        <mat-tab-group animationDuration="0ms" class="custom-tabs">
+          
+          <mat-tab label="My Watchlists">
+            <div class="tab-body">
+              <h3>Your Saved Collections</h3>
+              <div class="hotlist-grid">
+                
+                <div *ngFor="let list of hotlists$ | async" 
+                     class="hotlist-card" 
+                     [routerLink]="['/user/watchlist', list.id]">
+                  
+                  <div class="list-icon"><mat-icon>movie</mat-icon></div>
+                  <div class="list-info">
+                    <h4>{{ list.name }}</h4>
+                    <p>{{ list.movieIds.length || 0 }} Movies Saved</p>
+                  </div>
+                </div>
+                <div *ngIf="(hotlists$ | async)?.length === 0" class="empty-state">
+                  <mat-icon>bookmark_border</mat-icon>
+                  <p>You haven't created any watchlists yet.</p>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="My Bookings">
+    <div class="tab-body">
+      <h3>Your Tickets</h3>
+      
+      <div class="hotlist-grid" *ngIf="(myBookings$ | async) as bookings">
+        <div *ngFor="let booking of bookings" class="hotlist-card" style="cursor: default; align-items: flex-start;">
+          
+          <div class="list-icon" [ngStyle]="{'background': booking.status === 'Confirmed' ? '#059669' : '#e58e26'}">
+            <mat-icon style="color: white">{{ booking.status === 'Confirmed' ? 'check_circle' : 'hourglass_empty' }}</mat-icon>
+          </div>
+          
+          <div class="list-info" style="flex: 1;">
+            <h4 style="font-size: 18px; margin-bottom: 8px;">{{ booking.movieTitle }}</h4>
+            <p><strong>Seats:</strong> {{ booking.seats.join(', ') }}</p>
+            <p><strong>Total:</strong> ₹{{ booking.totalPrice }}</p>
+          </div>
+
+          <div class="status-badge" [class.confirmed]="booking.status === 'Confirmed'">
+            {{ booking.status }}
+          </div>
+        </div>
+
+        <div *ngIf="bookings.length === 0" class="empty-state">
+           <mat-icon>confirmation_number</mat-icon>
+           <p>No upcoming bookings found.</p>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+        </mat-tab-group>
+      </main>
+
+    </div>

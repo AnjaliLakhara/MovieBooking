@@ -1,0 +1,61 @@
+<div class="filter-sheet-container">
+  
+  <div class="sheet-header">
+    <h2>Filter by</h2>
+    <button mat-icon-button (click)="closeSheet()" class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="sheet-body">
+    
+    <div class="category-sidebar">
+      <div 
+        *ngFor="let cat of categories" 
+        class="category-item" 
+        [class.active]="activeCategory === cat"
+        (click)="setActiveCategory(cat)">
+        {{ cat }}
+      </div>
+    </div>
+
+    <div class="options-panel">
+      
+      <div *ngIf="activeCategory === 'Language'" class="options-list">
+        <mat-checkbox 
+          *ngFor="let lang of languages" 
+          [checked]="isItemSelected('languages', lang)"
+          (change)="toggleSelection('languages', lang)"
+          color="primary">
+          {{ lang }}
+        </mat-checkbox>
+      </div>
+
+      <div *ngIf="activeCategory === 'Format'" class="options-list">
+        <mat-checkbox 
+          *ngFor="let format of formats" 
+          [checked]="isItemSelected('formats', format)"
+          (change)="toggleSelection('formats', format)"
+          color="primary">
+          {{ format }}
+        </mat-checkbox>
+      </div>
+
+      <div *ngIf="activeCategory === 'Genre'" class="options-list">
+  <mat-checkbox *ngFor="let genre of genres$ | async" 
+    [checked]="isItemSelected('genres', genre.name)" 
+    (change)="toggleSelection('genres', genre.name)" 
+    color="primary">
+    {{ genre.name }}
+  </mat-checkbox>
+</div>
+
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <button mat-button class="clear-btn" (click)="clearAll()">Clear all</button>
+    <button mat-flat-button class="apply-btn" (click)="applyFilters()">Apply</button>
+  </div>
+
+</div>

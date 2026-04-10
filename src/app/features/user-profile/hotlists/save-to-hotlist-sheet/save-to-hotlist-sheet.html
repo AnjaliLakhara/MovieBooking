@@ -1,0 +1,38 @@
+<div class="save-sheet-container">
+  <div class="sheet-header">
+    <div class="header-text">
+      <h2>Save Movie</h2>
+      <p>Add to your watchlists</p>
+    </div>
+    <div class="bookmark-icon"><mat-icon>bookmark</mat-icon></div>
+  </div>
+
+  <div class="action-bar">
+    <h3>Your Hotlists</h3>
+    <button class="create-link" (click)="isCreatingNew = !isCreatingNew">
+      {{ isCreatingNew ? 'Cancel' : 'Create new' }}
+    </button>
+  </div>
+
+  <div class="create-new-row" *ngIf="isCreatingNew">
+    <input type="text" [(ngModel)]="newListName" placeholder="List name (e.g., Weekend Movies)" class="new-list-input" (keyup.enter)="createNewList()">
+    <button mat-icon-button color="accent" (click)="createNewList()" [disabled]="!newListName.trim()">
+      <mat-icon>check_circle</mat-icon>
+    </button>
+  </div>
+
+  <div class="lists-container">
+    <div *ngFor="let list of hotlists$ | async" class="list-item" (click)="saveToList(list)">
+      <div class="list-icon bg-gray"><mat-icon>list</mat-icon></div>
+      <div class="list-details">
+        <h4>{{ list.name }}</h4>
+        <p>{{ list.movieIds ? list.movieIds.length : 0 }} items</p>
+      </div>
+      <button mat-icon-button class="add-btn"><mat-icon>add_circle_outline</mat-icon></button>
+    </div>
+    
+    <div *ngIf="(hotlists$ | async)?.length === 0 && !isCreatingNew" class="no-lists-msg">
+       <p>You don't have any lists yet. Click "Create new" to get started!</p>
+    </div>
+  </div>
+</div>

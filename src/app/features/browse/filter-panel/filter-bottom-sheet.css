@@ -1,0 +1,102 @@
+
+:host {
+  display: block;
+}
+
+.filter-sheet-container {
+  background-color: #1a1a24; 
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 60vh; 
+  min-height: 400px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  overflow: hidden;
+}
+
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #2a2a35;
+}
+
+.sheet-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-btn {
+  color: #a0a0b0;
+}
+
+.sheet-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.category-sidebar {
+  width: 35%;
+  background-color: #1a1a24;
+  border-right: 1px solid #2a2a35;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-item {
+  padding: 16px 20px;
+  color: #a0a0b0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.category-item.active {
+  color: #ffffff;
+  background-color: #2a2a35;
+  border-left: 4px solid #7c3aed; 
+}
+
+.options-panel {
+  width: 65%;
+  background-color: #2a2a35; 
+  padding: 16px 20px;
+  overflow-y: auto; 
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+::ng-deep .mat-mdc-checkbox .mdc-form-field {
+  color: #ffffff !important;
+}
+
+.sheet-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #1a1a24;
+  border-top: 1px solid #2a2a35;
+}
+
+.clear-btn {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.apply-btn {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 600;
+  width: 120px;
+  border-radius: 8px;
+}

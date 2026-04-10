@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+/* 1. Add this exact line to the very top of your file */
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+/* Application-wide Dark Theme Resets */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #0d0d12;
+  color: #ffffff;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Removes default white padding from Material Bottom Sheets */
+.custom-bottom-sheet-container {
+  padding: 0 !important;
+  background-color: transparent !important; 
+}

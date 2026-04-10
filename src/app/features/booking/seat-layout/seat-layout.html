@@ -1,0 +1,39 @@
+<div class="booking-container">
+  
+  <div class="screen-container">
+    <div class="screen"></div>
+    <p class="screen-text">All eyes this way</p>
+  </div>
+
+  <div class="seating-grid">
+    <div class="seat-row" *ngFor="let row of seats; let i = index">
+      <span class="row-label">{{ rows[i] }}</span>
+      <div class="seats-wrapper">
+        <button 
+          *ngFor="let seat of row" 
+          class="seat-box" 
+          [ngClass]="seat.status"
+          (click)="toggleSeat(seat)"
+          [disabled]="seat.status === 'booked'">
+          {{ seat.id }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="seat-box available small"></div> Available</div>
+    <div class="legend-item"><div class="seat-box selected small"></div> Selected</div>
+    <div class="legend-item"><div class="seat-box booked small"></div> Booked</div>
+  </div>
+
+  <div class="checkout-bar" *ngIf="selectedSeats.length > 0">
+    <div class="price-info">
+      <p class="seat-count">{{ selectedSeats.length }} Tickets</p>
+      <h3 class="total">₹{{ totalPrice }}</h3>
+    </div>
+    <button mat-flat-button color="warn" class="pay-btn" (click)="proceedToPay()">
+      Pay Now
+    </button>
+  </div>
+</div>

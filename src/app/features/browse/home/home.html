@@ -1,0 +1,83 @@
+<div class="home-container">
+  
+  <div class="top-controls">
+    <button mat-stroked-button class="filter-trigger" (click)="openFilterPanel()">
+      <mat-icon>tune</mat-icon> Filters
+    </button>
+  </div>
+
+  <div *ngIf="(baseFilteredMovies$ | async)?.length === 0" class="no-results">
+    <mat-icon style="font-size: 48px; width: 48px; height: 48px; opacity: 0.5;">search_off</mat-icon>
+    <p>No movies match your current search or filters.</p>
+    <button mat-button color="primary" (click)="openFilterPanel()">Change Filters</button>
+  </div>
+
+  <section class="slider-section" *ngIf="(topHits$ | async)?.length">
+    <div class="section-header">
+      <div class="header-line"></div>
+      <h2 class="section-title">TOP 10 HITS</h2>
+      <div class="header-line"></div>
+    </div>
+    
+    <div class="slider-track">
+      <app-movie-card 
+        *ngFor="let movie of topHits$ | async" 
+        [movie]="movie"
+        (saveToHotlist)="handleSaveToHotlist($event)"
+        (bookTickets)="handleBookTickets($event)">
+      </app-movie-card>
+    </div>
+  </section>
+
+  <section class="slider-section" *ngIf="(curated$ | async)?.length">
+    <div class="section-header">
+      <div class="header-line"></div>
+      <h2 class="section-title">CURATED FOR YOU</h2>
+      <div class="header-line"></div>
+    </div>
+    
+    <div class="slider-track">
+      <app-movie-card 
+        *ngFor="let movie of curated$ | async" 
+        [movie]="movie"
+        (saveToHotlist)="handleSaveToHotlist($event)"
+        (bookTickets)="handleBookTickets($event)">
+      </app-movie-card>
+    </div>
+  </section>
+
+  <section class="slider-section" *ngIf="(blockbusters$ | async)?.length">
+    <div class="section-header">
+      <div class="header-line"></div>
+      <h2 class="section-title">BlockBusters</h2>
+      <div class="header-line"></div>
+    </div>
+    
+    <div class="slider-track">
+      <app-movie-card 
+        *ngFor="let movie of blockbusters$ | async" 
+        [movie]="movie"
+        (saveToHotlist)="handleSaveToHotlist($event)"
+        (bookTickets)="handleBookTickets($event)">
+      </app-movie-card>
+    </div>
+  </section>
+
+  <section class="slider-section" *ngIf="(cinematicMasterpiece$ | async)?.length">
+    <div class="section-header">
+      <div class="header-line"></div>
+      <h2 class="section-title">Cinematic Masterpiece</h2>
+      <div class="header-line"></div>
+    </div>
+    
+    <div class="slider-track">
+      <app-movie-card 
+        *ngFor="let movie of cinematicMasterpiece$ | async" 
+        [movie]="movie"
+        (saveToHotlist)="handleSaveToHotlist($event)"
+        (bookTickets)="handleBookTickets($event)">
+      </app-movie-card>
+    </div>
+  </section>
+
+</div>

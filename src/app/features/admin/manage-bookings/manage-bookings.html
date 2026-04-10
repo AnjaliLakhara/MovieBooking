@@ -1,0 +1,37 @@
+<div class="dashboard-container">
+      <h2>Manage Bookings</h2>
+      <p style="color: #a0a0b0; margin-bottom: 24px;">Review and confirm user ticket requests.</p>
+
+      <mat-card class="table-card">
+        <table class="modern-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>User Email</th>
+              <th>Movie</th>
+              <th>Seats</th>
+              <th>Total Amount</th>
+              <th>Status Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let b of allBookings$ | async">
+              <td>{{ b.createdAt?.toDate() | date:'shortDate' }}</td>
+              <td>{{ b.userEmail }}</td>
+              <td style="font-weight: bold;">{{ b.movieTitle }}</td>
+              <td>{{ b.seats.join(', ') }}</td>
+              <td>₹{{ b.totalPrice }}</td>
+              <td>
+                <mat-form-field appearance="outline" subscriptSizing="dynamic" class="dense-select">
+                  <mat-select [value]="b.status" (selectionChange)="updateStatus(b.id!, $event.value)">
+                    <mat-option value="Pending">Pending</mat-option>
+                    <mat-option value="Confirmed">Confirm</mat-option>
+                    <mat-option value="Cancelled">Cancel</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card>
+    </div>

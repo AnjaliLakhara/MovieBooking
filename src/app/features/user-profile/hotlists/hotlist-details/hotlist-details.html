@@ -1,0 +1,38 @@
+<div class="watchlist-container" *ngIf="viewData$ | async as data">
+      
+      <div class="header">
+        <div class="header-left">
+          <button mat-icon-button routerLink="/user/profile" class="back-btn"><mat-icon>arrow_back</mat-icon></button>
+          <div>
+            <h1 *ngIf="data.list">{{ data.list.name }}</h1>
+            <p *ngIf="data.list">{{ data.savedMovies.length }} Movies Saved</p>
+          </div>
+        </div>
+
+        <button *ngIf="data.list" mat-stroked-button color="warn" class="delete-list-btn" (click)="deleteList(data.list.id, data.list.name)">
+          <mat-icon>delete_forever</mat-icon> Delete List
+        </button>
+      </div>
+
+      <div class="movie-grid" *ngIf="data.savedMovies.length > 0; else emptyState">
+        
+        <div class="movie-wrapper" *ngFor="let movie of data.savedMovies">
+          <app-movie-card [movie]="movie"></app-movie-card>
+          
+          <button mat-flat-button color="warn" class="remove-btn" (click)="removeMovie(data.list!.id, movie.id, movie.title)">
+            <mat-icon>remove_circle_outline</mat-icon> Remove
+          </button>
+        </div>
+
+      </div>
+
+      <ng-template #emptyState>
+        <div class="empty-state">
+          <mat-icon>movie_filter</mat-icon>
+          <h3>This list is empty</h3>
+          <p>Go back home and click the bookmark icon on a movie to add it here!</p>
+          <button mat-flat-button color="primary" routerLink="/user/home">Browse Movies</button>
+        </div>
+      </ng-template>
+
+    </div>

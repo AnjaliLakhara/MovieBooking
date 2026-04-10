@@ -1,0 +1,31 @@
+<div class="quick-view-container">
+      <button mat-icon-button class="close-btn" (click)="close()"><mat-icon>close</mat-icon></button>
+      
+      <div class="content-split">
+        <div class="poster-side" [style.backgroundImage]="'url(' + movie.posterUrl + ')'"></div>
+        
+        <div class="details-side">
+          <h2>{{ movie.title }}</h2>
+          <div class="meta-tags">
+            <span class="tag cert">{{ movie.certification }}</span>
+            <span class="tag"><mat-icon inline>star</mat-icon> {{ movie.imdbRating }}/10</span>
+            <span class="tag">{{ movie.durationMinutes }} min</span>
+          </div>
+          
+          <p class="synopsis">{{ movie.description }}</p>
+          
+          <div class="info-row">
+            <strong>Genres:</strong> <span>{{ movie.genres.join(', ') }}</span>
+          </div>
+          <div class="info-row">
+            <strong>Languages:</strong> <span>{{ movie.languages.join(', ') }}</span>
+          </div>
+
+          <div class="action-footer">
+            <button mat-flat-button color="warn" class="book-btn" (click)="bookTickets()">
+              Book Tickets
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>

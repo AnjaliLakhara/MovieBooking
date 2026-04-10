@@ -1,0 +1,59 @@
+.movie-card {
+  width: 160px;
+  background-color: #1a1a24; 
+  color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);
+}
+
+.movie-poster {
+  height: 240px;
+  object-fit: cover;
+  margin: 0 !important;
+}
+
+.movie-content {
+  padding: 12px !important;
+}
+
+.movie-title {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #a0a0b0;
+}
+
+.divider {
+  color: #4a4a5a;
+}
+
+.save-button {
+  position: absolute !important;
+  bottom: 65px; 
+  right: 8px;
+  background-color: rgba(30, 30, 40, 0.8) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  transform: scale(0.8);
+}
+
+.save-button:hover {
+  background-color: rgba(50, 50, 60, 0.9) !important;
+}

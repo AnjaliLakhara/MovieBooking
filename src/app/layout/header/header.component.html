@@ -1,0 +1,18 @@
+<header class="app-header">
+  <div class="search-wrapper">
+    <div class="search-bar">
+      <mat-icon class="search-icon">search</mat-icon>
+     <input type="text" placeholder="Search for 'Movies...'" class="search-input" (input)="onSearch($event)">
+    </div>
+    <div class="profile-section">
+      <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-btn"><mat-icon>account_circle</mat-icon></button>
+      <mat-menu #profileMenu="matMenu" class="dark-dropdown">
+        <button mat-menu-item routerLink="/user/profile"><mat-icon>person</mat-icon><span>My Profile</span></button>
+        <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon><span>Logout</span></button>
+      </mat-menu>
+    </div>
+  </div>
+  <nav class="nav-tabs-container">
+    <a *ngFor="let tab of navTabs" [routerLink]="tab.path" routerLinkActive="active-tab" class="nav-tab">{{ tab.label }}</a>
+  </nav>
+</header>

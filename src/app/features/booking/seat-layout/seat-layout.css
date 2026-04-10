@@ -1,0 +1,155 @@
+.booking-container {
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0d0d12;
+    min-height: 100vh;
+    color: white;
+    padding-bottom: 100px;
+}
+
+.screen-container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.screen {
+    height: 40px;
+    border-top: 4px solid #7c3aed;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    background: linear-gradient(to bottom, rgba(124, 58, 237, 0.2), transparent);
+}
+
+.screen-text {
+    margin-top: 8px;
+    color: #a0a0b0;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.seating-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-x: auto;
+    max-width: 100%;
+    padding-bottom: 16px;
+}
+
+.seat-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.row-label {
+    width: 20px;
+    font-weight: 600;
+    color: #a0a0b0;
+    text-align: right;
+}
+
+.seats-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.seat-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid #2a2a35;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.seat-box:hover:not(.booked) {
+    border-color: #7c3aed;
+}
+
+.seat-box.available {
+    background-color: #1a1a24;
+}
+
+.seat-box.selected {
+    background-color: #7c3aed;
+    border-color: #7c3aed;
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+}
+
+.seat-box.booked {
+    background-color: #2a2a35;
+    color: #4a4a5a;
+    border-color: #2a2a35;
+    cursor: not-allowed;
+}
+
+
+.legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #2a2a35;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #a0a0b0;
+}
+
+.seat-box.small {
+    width: 20px;
+    height: 20px;
+    font-size: 0;
+    cursor: default;
+}
+
+.checkout-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #1a1a24;
+    border-top: 1px solid #2a2a35;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.price-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #a0a0b0;
+}
+
+.price-info h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.pay-btn {
+    width: 140px;
+    height: 44px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}

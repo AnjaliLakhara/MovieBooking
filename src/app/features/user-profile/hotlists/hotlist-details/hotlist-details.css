@@ -1,0 +1,92 @@
+.watchlist-container {
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 80vh;
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #2a2a35;
+    padding-bottom: 24px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.back-btn {
+    background-color: #1a1a24;
+    color: white;
+    margin-top: -10px;
+}
+
+.delete-list-btn {
+    margin-top: 4px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+p {
+    margin: 4px 0 0 0;
+    color: #a0a0b0;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+/* NEW: Styling for the movie card + remove button stack */
+.movie-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.remove-btn {
+    width: 100%;
+    background-color: #2a2a35;
+    color: #ef4444;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 0;
+    color: #a0a0b0;
+    background-color: #1a1a24;
+    border-radius: 16px;
+}
+
+.empty-state mat-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+    color: #7c3aed;
+}
+
+.empty-state h3 {
+    color: white;
+    font-size: 24px;
+    margin: 0 0 8px 0;
+}
+
+.empty-state p {
+    margin-bottom: 24px;
+}

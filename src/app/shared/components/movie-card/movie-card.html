@@ -1,0 +1,21 @@
+<mat-card class="movie-card" (click)="openQuickView()">
+  
+  <img mat-card-image [src]="movie.posterUrl" [alt]="movie.title" class="movie-poster">
+  
+  <mat-card-content class="movie-content">
+    <h3 class="movie-title">{{ movie.title }}</h3>
+    <div class="movie-meta">
+      <span class="cert-tag">{{ movie.certification }}</span>
+      <span class="divider">|</span>
+      <span class="lang-tag">
+        {{ movie.languages[0] }} 
+        <ng-container *ngIf="movie.languages.length > 1">+{{ movie.languages.length - 1 }}</ng-container>
+      </span>
+    </div>
+  </mat-card-content>
+
+  <button mat-mini-fab class="save-button" (click)="onSaveClick($event)">
+    <mat-icon>bookmark_border</mat-icon>
+  </button>
+  
+</mat-card>

@@ -1,0 +1,31 @@
+<div class="admin-wrapper">
+      
+      <aside class="sidebar">
+        <div class="brand">
+          <mat-icon color="warn">movie</mat-icon>
+          <h2>Admin Hub</h2>
+        </div>
+        <nav class="sidebar-nav">
+          <a routerLink="/admin/dashboard" routerLinkActive="active"><mat-icon>dashboard</mat-icon> Dashboard</a>
+          <a routerLink="/admin/manage-movies" routerLinkActive="active"><mat-icon>theaters</mat-icon> Movies</a>
+          <a routerLink="/admin/manage-genres" routerLinkActive="active"><mat-icon>category</mat-icon> Genres</a>
+          <a mat-list-item routerLink="/admin/manage-bookings" routerLinkActive="active-link">
+  <mat-icon>receipt_long</mat-icon>
+  <span>Manage Bookings</span>
+</a>
+        </nav>
+        <div class="sidebar-footer">
+          <button class="logout-btn" (click)="logout()"><mat-icon>exit_to_app</mat-icon> Logout</button>
+        </div>
+      </aside>
+
+      <div class="main-panel">
+        <header class="topbar">
+          <div class="topbar-title">Welcome back, Admin</div>
+        </header>
+        <main class="content">
+          <router-outlet></router-outlet>
+        </main>
+      </div>
+
+    </div>
